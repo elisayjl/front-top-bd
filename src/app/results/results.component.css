@@ -1,0 +1,41 @@
+.results-container {
+  padding: 30px;
+  background-color: #fefefe;
+  font-family: sans-serif;
+}
+
+.top-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.top-bar input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #c33ac7;
+  border-radius: 5px;
+}
+
+.top-bar button {
+  background-color: #c33ac7;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.frame-title {
+  color: #aaa;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.result-box {
+  border: 1px solid #c33ac7;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+}

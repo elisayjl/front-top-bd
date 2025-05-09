@@ -1,0 +1,15 @@
+<div class="results-container">
+  <div class="top-bar">
+    <input [(ngModel)]="query" />
+    <button>{{ results.length }} resultados</button>
+  </div>
+
+  <div *ngFor="let result of results; index as i">
+    <div class="result-box">
+      <strong>{{ result.title }}</strong
+      ><br />
+      {{ result.author }}<br />
+      {{ result.snippet }}
+    </div>
+  </div>
+</div>
