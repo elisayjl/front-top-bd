@@ -1,7 +1,28 @@
-<div class="results-container">
+<!-- <div class="results-container">
   <div class="top-bar">
     <input [(ngModel)]="query" />
     <button>{{ results.length }} resultados</button>
+  </div>
+
+  <div *ngFor="let result of results; index as i">
+    <div class="result-box">
+      <strong>{{ result.title }}</strong
+      ><br />
+      {{ result.author }}<br />
+      {{ result.snippet }}
+    </div>
+  </div>
+</div> -->
+
+<div class="results-container">
+  <div class="top-bar">
+    <input [(ngModel)]="query" placeholder="Digite sua busca..." />
+
+    <button (click)="searchArticles(query)">
+      <span class="material-icons">search</span>
+    </button>
+
+    <button disabled>{{ results.length }} resultados</button>
   </div>
 
   <div *ngFor="let result of results; index as i">

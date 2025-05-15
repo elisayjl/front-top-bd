@@ -22,7 +22,7 @@
   background-color: #c33ac7;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 7px 15px;
   border-radius: 5px;
   font-weight: bold;
 }
@@ -38,4 +38,13 @@
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 15px;
+}
+
+button span.material-icons {
+  cursor: pointer;
+  background-color: #c33ac7;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 0 8px 8px 0;
 }
