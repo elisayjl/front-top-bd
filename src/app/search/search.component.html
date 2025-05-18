@@ -1,6 +1,13 @@
 <div class="container">
-  <input [(ngModel)]="query" placeholder="Digite sua busca..." />
-  <button (click)="search()">
-    <span class="material-icons">search</span>
-  </button>
+  <div class="text-area">
+    <h1 class="title">  Encontre seus <span class="highlight">artigos científicos</span> com Lumi</h1>
+    <p class="subtitle">Chega de procurar artigos no escuro. A Lumi te mostra o caminho.</p>
+  </div>
+
+  <div class="search-area">
+    <input [(ngModel)]="query" placeholder="Digite sua busca..." />
+    <button (click)="search()">
+      <span class="material-icons">search</span>
+    </button>
+  </div>
 </div>

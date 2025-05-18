@@ -18,19 +18,19 @@
   <div class="top-bar">
     <input [(ngModel)]="query" placeholder="Digite sua busca..." />
 
-    <button (click)="searchArticles(query)">
+    <button class="search-button" (click)="searchArticles(query)">
       <span class="material-icons">search</span>
     </button>
 
-    <button disabled>{{ results.length }} resultados</button>
+    <button class="results-count" disabled>{{ results.length }} resultados</button>
   </div>
 
   <div *ngFor="let result of results; index as i">
     <div class="result-box">
-      <strong>{{ result.title }}</strong
-      ><br />
-      {{ result.author }}<br />
-      {{ result.snippet }}
+      <strong>{{ result.title }}</strong><br />
+      <span class="author">{{ result.author }}</span><br />
+      <p class="snippet">{{ result.snippet }}</p>
     </div>
   </div>
 </div>
+
