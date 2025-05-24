@@ -12,10 +12,11 @@ input {
   border: 2px solid #c33ac7;
   border-radius: 8px 0 0 8px;
   outline: none;
+  font-size: 16px;
 }
 
 button {
-  padding: 8px 12px;
+  padding: 10px 12px;
   background-color: #c33ac7;
   border: none;
   color: white;

@@ -1,3 +1,7 @@
+p {
+  margin: 0;
+}
+
 .results-container {
   padding: 30px;
   background-color: #fefefe;
@@ -9,21 +13,22 @@
   gap: 10px;
   align-items: center;
   margin-bottom: 20px;
+  justify-content: space-around;
 }
 
 .top-bar input {
   flex: 1;
   padding: 10px;
   border: 2px solid #c33ac7;
-  border-radius: 5px;
+  border-radius: 8px 0 0 8px;
 }
 
 .top-bar button {
   background-color: #c33ac7;
   color: white;
   border: none;
-  padding: 7px 15px;
-  border-radius: 5px;
+  padding: 6px 15px;
+  border-radius: 6px;
   font-weight: bold;
 }
 
@@ -35,9 +40,12 @@
 
 .result-box {
   border: 1px solid #c33ac7;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: 8px;
+  padding: 32px;
   margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 button span.material-icons {
@@ -47,4 +55,24 @@ button span.material-icons {
   color: white;
   font-weight: bold;
   border-radius: 0 8px 8px 0;
+}
+
+.top-bar input:focus {
+  outline: none;
+  border-color: #c33ac7;
+  box-shadow: none;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 80%;
+}
+
+.search-button {
+  border-radius: 0 8px 8px 0 !important;
+}
+
+.result-button {
+  padding: 10px 16px !important;
 }

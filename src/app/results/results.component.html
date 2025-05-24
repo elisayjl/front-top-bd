@@ -16,21 +16,32 @@
 
 <div class="results-container">
   <div class="top-bar">
-    <input [(ngModel)]="query" placeholder="Digite sua busca..." />
+    <div class="search-bar">
+      <input [(ngModel)]="query" placeholder="Digite sua busca..." />
 
-    <button (click)="searchArticles(query)">
-      <span class="material-icons">search</span>
+      <button (click)="searchArticles(query)" class="search-button">
+        <span class="material-icons">search</span>
+      </button>
+    </div>
+
+    <button disabled class="result-button">
+      {{ results.length }} resultados
     </button>
-
-    <button disabled>{{ results.length }} resultados</button>
   </div>
 
   <div *ngFor="let result of results; index as i">
     <div class="result-box">
-      <strong>{{ result.title }}</strong
-      ><br />
-      {{ result.author }}<br />
-      {{ result.snippet }}
+      <p>
+        <strong>
+          <a [href]="result.url" target="_blank" rel="noopener noreferrer">
+            {{ result.title }}
+          </a>
+        </strong>
+      </p>
+      <p>
+        <em>{{ result.author }}</em>
+      </p>
+      <p>{{ result.snippet }}...</p>
     </div>
   </div>
 </div>
