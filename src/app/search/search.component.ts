@@ -13,14 +13,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class SearchComponent implements OnInit {
   query = '';
-  categories: { name: string; count: number }[] = [];
+  categories: { id: string; name: string; count: number }[] = [];
 
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get<{ name: string; count: number }[]>('http://127.0.0.1:5000/categories')
+    this.http.get<{ id: string; name: string; count: number }[]>('http://localhost:5000/categories')
       .subscribe({
         next: (data) => {
+          console.log('Categorias recebidas:', data);
           this.categories = data;
         },
         error: (err) => {
@@ -28,7 +29,7 @@ export class SearchComponent implements OnInit {
         }
       });
   }
-
+  
   search() {
     if (this.query.trim()) {
       this.router.navigate(['/results'], { queryParams: { q: this.query } });

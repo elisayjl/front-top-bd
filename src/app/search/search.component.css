@@ -87,6 +87,7 @@ button {
 
 .category-box .count {
   color: #6b7280;
+  font-size: 12px;
 }
 
 #cat-title{
@@ -103,7 +104,7 @@ button {
 }
 
 .apply-button{
-  padding: 8px;
+  padding: 10px;
   border-radius: 20px;
 }
 
@@ -268,3 +269,29 @@ button {
   }
 }
 
+.floating-bot-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #5e60ce;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: background-color 0.3s ease;
+}
+
+.floating-bot-button:hover {
+  background-color: #4e50c0;
+}
+
+.floating-bot-button .material-icons {
+  font-size: 50px;
+}
