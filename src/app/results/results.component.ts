@@ -15,8 +15,8 @@ import { FormsModule } from '@angular/forms';
 export class ResultsComponent implements OnInit {
   query = '';
   // results: { title: string; author: string; snippet: string }[] = [];
-  results: { title: string; author: string; snippet: string; url: string }[] =
-    [];
+  results: { title: string; author: string; category: string; snippet: string; url: string }[] = [];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -72,10 +72,11 @@ export class ResultsComponent implements OnInit {
       next: (res) => {
         this.results = res.results.map((item: any) => ({
           title: item.title || 'Sem título',
-          author: item.category || 'Sem categoria',
+          author: item.author||'Autor desconhecido', // ou item.author se houver no futuro
+          category: item.category || 'Sem categoria',
           snippet: item.summary?.slice(0, 200) || 'Sem descrição',
           url: item.url || '#',
-        }));
+        }));    
       },
       error: (err) => {
         console.error('Erro na busca:', err);
