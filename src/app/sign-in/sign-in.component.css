@@ -1,0 +1,92 @@
+.sign-in-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e293b 0%, #0ea5e9 100%);
+}
+
+form {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 32px rgba(30, 41, 59, 0.15);
+  width: 100%;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+h2 {
+  color: #0ea5e9;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  color: #334155;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #f8fafc;
+  transition: border-color 0.2s;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #0ea5e9;
+  outline: none;
+  background: #fff;
+}
+
+.btn-primary {
+  background: #0ea5e9;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 0;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: #0369a1;
+}
+
+.sign-up-link {
+  text-align: center;
+  color: #64748b;
+  font-size: 0.97rem;
+  margin-top: 1rem;
+}
+
+.sign-up-link a {
+  color: #0ea5e9;
+  text-decoration: none;
+  font-weight: 500;
+  transition: text-decoration 0.2s;
+}
+
+.sign-up-link a:hover {
+  text-decoration: underline;
+}

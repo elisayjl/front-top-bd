@@ -1,20 +1,19 @@
 <header class="header">
-    <div class="logo">
-      <span class="logo-circle">Lumi</span><span class="logo-text">Articles</span>
+  <div class="logo" (click)="navigateToHome()">
+    <span class="logo-circle">Lumi</span><span class="logo-text">Articles</span>
+  </div>
+
+  <nav class="nav-links">
+    <a routerLink="/jobs" routerLinkActive="active"></a>
+    <a routerLink="/people"></a>
+    <a routerLink="/resumes"></a>
+  </nav>
+
+  <div class="auth-buttons">
+    <button class="sign-up" disabled>Sign Up</button>
+    <button class="sign-in" (click)="navigateToSignIn()">Sign In</button>
+    <div class="language-selector">
+      <span class="material-icons">language</span>
     </div>
-  
-    <nav class="nav-links">
-      <a routerLink="/jobs" routerLinkActive="active"></a>
-      <a routerLink="/people"></a>
-      <a routerLink="/resumes"></a>
-    </nav>
-  
-    <div class="auth-buttons">
-      <button class="sign-up" disabled>Sign Up</button>
-      <button class="sign-in">Sign In</button>
-      <div class="language-selector">
-        <span class="material-icons">language</span>
-      </div>
-    </div>
-  </header>
-  
+  </div>
+</header>
