@@ -2,40 +2,106 @@
   <div class="top-bar">
     <div class="search-bar">
       <input [(ngModel)]="query" placeholder="Digite sua busca..." />
-
       <button class="search-button" (click)="searchArticles(query)">
         <span class="material-icons">search</span>
       </button>
-
       <button class="results-count" disabled>
-        {{ results.length }} resultados
+        {{ totalItems }} resultados
+      </button>
+      <button class="filter-toggle-button" (click)="showFilters = !showFilters">
+        <span class="material-icons">filter_alt</span>
       </button>
     </div>
 
+    <!-- Filtros -->
+    <div class="filter-overlay" *ngIf="showFilters">
+      <div class="filter-panel">
+        <button class="close-button" (click)="showFilters = false">
+          <span class="material-icons">close</span>
+        </button>
+
+        <h3>Filtros</h3>
+
+        <label class="labelFilter">Período</label>
+        <select [(ngModel)]="dateRange">
+          <option value="">Todos os períodos</option>
+          <option value="1y">Último ano</option>
+          <option value="2y">Últimos 2 anos</option>
+          <option value="3y">Últimos 3 anos</option>
+          <option value="custom">Personalizado</option>
+        </select>
+
+        <div *ngIf="dateRange === 'custom'" class="custom-date-range">
+          <label>Início: <input type="date" [(ngModel)]="customStart" /></label>
+          <label>Fim: <input type="date" [(ngModel)]="customEnd" /></label>
+        </div>
+
+        <br>
+        <br> 
+
+        <label class="labelFilter">Categoria</label>
+        <select [(ngModel)]="category">
+          <option value="">Todas as categorias</option>
+          <option *ngFor="let cat of categories" [value]="cat.id">
+            {{ cat.name }}
+          </option>
+        </select>
+
+        <br>
+        <br> 
+
+        <label class="labelFilter">Autor</label>
+        <br>
+        
+        <input type="text" id="autor" [(ngModel)]="author" placeholder="Nome do autor" />
+
+        <button class="filter-button" (click)="applyFilters()">Aplicar Filtros</button>
+      </div>
+    </div>
+
+    <!-- Resultados -->
     <div class="results-background">
-      <div *ngFor="let result of results; index as i">
+      <div *ngFor="let result of results">
         <div class="result-box">
           <p class="data-area">
-            Publicado: Adicionar data | Área: {{ result.category }}
+            Publicado {{ result.published | dateRelative }} |
+            Área: {{ getCategoryName(result.category) }}
+
+            <span class="info-tooltip-container">
+              <span class="material-icons info-icon">info</span>
+              <span class="info-tooltip">
+                {{ (result.snippet || 'Sem resumo disponível').slice(0, 500) }}
+                {{ result.snippet && result.snippet.length > 500 ? '...' : '' }}
+              </span>
+            </span>
           </p>
 
-          <h3 class="titulo">{{ result.title }}</h3>
+          <h4 class="titulo">{{ result.title }}</h4>
 
           <div class="autor-badge">
             <span class="material-icons">person</span>
             {{ result.author }}
           </div>
 
-          <a
-            class="ler-agora-button"
-            [href]="result.url"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ler Agora
-          </a>
+          <a class="ler-agora-button" [href]="result.url" target="_blank">Ler Agora</a>
         </div>
       </div>
+    </div>
+
+    <!-- Paginação -->
+    <div class="pagination-controls" *ngIf="totalPages > 1">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+        Anterior
+      </button>
+
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
+
+      <button
+        (click)="changePage(currentPage + 1)"
+        [disabled]="currentPage === totalPages"
+      >
+        Próxima
+      </button>
     </div>
   </div>
 </div>

@@ -19,8 +19,8 @@
 
 <div class="container-sub">
   <div class="sidebar">
-    <div class="category-box">
-      <span id="cat-title">Categorias</span>
+    <div class="title-rec">
+      <b> <span id="cat-title">Categorias</span> </b>
     </div>
 
     <div class="category-box" *ngFor="let category of categories">
@@ -33,80 +33,38 @@
   </div>
 
   <div class="recommendations">
-    <div class="article-box">
-      <div class="article-header">
-        <span>Publicado: 2 anos atrás | </span>
-        <span> Área: Inteligência Artificial</span>
-      </div>
-      <div class="article-title">
-        Transformers para Processamento de Linguagem Natural
+
+      <div class="title-rec" id="title-rec">
+       <b> <span> Recomendações para você</span> </b>
       </div>
 
+    <div class="article-box" *ngFor="let rec of recommendations">
+      <div class="article-header">
+        <span>Publicado {{ rec.published | dateRelative }} | </span>
+        <span> Área: {{ getCategoryName(rec.category)   || 'Sem categoria' }}</span>
+      
+        <!-- Ícone de informação com tooltip -->
+        <span class="info-icon-container" tabindex="0" aria-label="Resumo do artigo">
+          <span class="material-icons info-icon">info</span>
+          <span class="tooltip-text">{{ (rec.summary || 'Sem resumo disponível').slice(0, 500) }}{{ rec.summary && rec.summary.length > 800 ? '...' : '' }}</span>
+        </span>
+      </div>
+      
+      <div class="article-title">
+        <b>{{ rec.title || 'Sem título' }}  </b>
+      </div>
+  
       <div class="article-footer">
         <span class="info-block">
-          <span class="material-icons">person</span> Ana Silva
-        </span>
-        <span class="separator">|</span>
-        <span class="info-block">
-          <span class="material-icons">school</span> Universidade de São Paulo
-          (USP)
+          <span class="material-icons">person</span>
+          {{ rec.authors?.join(', ') || 'Autor desconhecido' }}
         </span>
       </div>
-
-      <button class="apply-button">Ler Agora</button>
-    </div>
-
-    <div class="article-box">
-      <div class="article-header">
-        <span>Publicado: 6 meses atrás |</span>
-        <span> Área: Física</span>
-      </div>
-      <div class="article-title">
-        Estudo Quântico de Buracos Negros Rotacionais
-      </div>
-
-      <div class="article-footer">
-        <span class="info-block">
-          <span class="material-icons">person</span> Carlos Lima
-        </span>
-        <span class="separator">|</span>
-        <span class="info-block">
-          <span class="material-icons">school</span> Universidade Federal do Rio
-          de Janeiro (UFRJ)
-        </span>
-      </div>
-
-      <button class="apply-button">Ler Agora</button>
-    </div>
-
-    <div class="article-box">
-      <div class="article-header">
-        <span>Publicado: 1 ano atrás |</span>
-        <span> Área: Matemática</span>
-      </div>
-      <div class="article-title">
-        Topologia Algébrica Aplicada à Análise de Dados
-      </div>
-
-      <div class="article-footer">
-        <span class="info-block">
-          <span class="material-icons">person</span> Marina Costa
-        </span>
-        <span class="separator">|</span>
-        <span class="info-block">
-          <span class="material-icons">school</span> Instituto de Matemática
-          Pura e Aplicada (IMPA)
-        </span>
-      </div>
-
-      <button class="apply-button">Ler Agora</button>
+  
+      <a [href]="rec.url" target="_blank" class="apply-button">Ler Agora</a>
     </div>
   </div>
-</div>
-
-<button class="floating-bot-button">
-  <span class="material-icons">smart_toy</span>
-</button>
+  
 
 <!-- <div class="container-sub">
   <div class="sidebar">

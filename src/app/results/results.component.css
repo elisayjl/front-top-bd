@@ -8,6 +8,12 @@ body {
   box-sizing: border-box;
   border-radius: 10px;
 }
+.filter-bar {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
 
 .top-bar {
   display: flex;
@@ -29,6 +35,40 @@ input {
   border-radius: 20px 0 0 20px;
   outline: none;
   font-size: 1rem;
+}
+
+input[type="date"], select{
+  padding: 10px;
+  border: 1px solid #3f51b5;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+  width: 100%;
+}
+
+#autor{
+
+  padding: 10px;
+  border: 1px solid #3f51b5;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+  width: 94%;
+
+}
+#authorFilter{
+  padding: 10px;
+  border: 1px solid #3f51b5;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+  width: 95%;
 }
 
 button {
@@ -145,6 +185,191 @@ button {
   display: inline-block;
   width: 95%;
 }
+
+.data-area {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px; /* espaçamento entre texto e ícone */
+}
+
+.info-tooltip-container {
+  position: relative;
+  display: inline-flex;       /* inline-flex para alinhar com texto */
+  align-items: center;        /* vertical center */
+  margin-left: 6px;           /* pequeno espaço à esquerda */
+  cursor: pointer;
+}
+
+.info-icon {
+  font-size: 18px;
+  color: #3f51b5; /* roxo escuro */
+  user-select: none;  /* evita seleção ao clicar/arrastar */
+}
+
+/* Tooltip permanece igual */
+.info-tooltip {
+  visibility: hidden;
+  max-width: 300px;
+  width: max-content;
+  white-space: normal;
+  word-wrap: break-word;
+  background-color: white;
+  color: black;
+  text-align: left;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 100;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  font-size: 13px;
+  line-height: 1.3em;
+}
+
+.info-tooltip-container:hover .info-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*Filtros */
+
+.filter-toggle-button {
+  margin-left: 10px;
+  background-color: #eee;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.filter-toggle-button:hover {
+  background-color: #ddd;
+}
+
+.filter-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter-panel {
+  background: white;
+  width: 300px;
+  height: 100%;
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+.filter-panel.visible {
+  right: 0;
+}
+
+.filter-panel h3 {
+  margin-top: 0;
+}
+
+.custom-date-range {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.filter-button {
+  margin-top: 20px;
+  background-color: #3d4fc3;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 103%;
+}
+
+#dateFilter{
+width: 100%;
+padding: 12px;
+border:1px solid #3d4fc3;;
+border-radius: 4px;
+}
+
+.labelFilter{
+  font-weight: bold;
+  color: #3d4fc3;
+}
+
+.filter-button:hover {
+  background-color: #3d4fc3;
+}
+
+/* Botão de fechar */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.close-button .material-icons {
+  font-size: 24px;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 12px;
+  text-align: center;
+}
+
+.pagination-controls button {
+  padding: 6px 12px;
+  background-color: #3d4fc3;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+
+
+.pagination-controls span {
+  display: inline-block;
+  min-width: 100px;
+  text-align: center;
+  margin-right: 13px;
+}
+
+
+/* Animação de entrada */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 
 /* Responsividade */
 @media (max-width: 768px) {

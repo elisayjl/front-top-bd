@@ -66,3 +66,16 @@
   color: #555;
   cursor: pointer;
 }
+
+.profile-btn, .logout-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.material-icons {
+  font-size: 28px;
+  transition: color 0.3s ease;
+}
+

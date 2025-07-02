@@ -3,17 +3,25 @@
     <span class="logo-circle">Lumi</span><span class="logo-text">Articles</span>
   </div>
 
-  <nav class="nav-links">
-    <a routerLink="/jobs" routerLinkActive="active"></a>
-    <a routerLink="/people"></a>
-    <a routerLink="/resumes"></a>
-  </nav>
+
 
   <div class="auth-buttons">
-    <button class="sign-up" disabled>Sign Up</button>
-    <button class="sign-in" (click)="navigateToSignIn()">Sign In</button>
-    <div class="language-selector">
-      <span class="material-icons">language</span>
-    </div>
+    <!-- Quando NÃO estiver logado -->
+    <ng-container *ngIf="!authService.isLoggedIn(); else loggedIn">
+      <button class="sign-up" (click)="navigateToSignUp()">Sign Up</button>
+      <button class="sign-in" (click)="navigateToSignIn()">Sign In</button>
+    </ng-container>
+
+    <!-- Quando estiver logado -->
+    <ng-template #loggedIn>
+      <button class="profile-btn" (click)="navigateToProfile()">
+        <span class="material-icons" style="color: #3f51b5;">account_circle</span>
+      </button>
+      <button class="logout-btn" (click)="logout()">
+        <span class="material-icons" style="color: #3f51b5;">logout</span>
+      </button>
+    </ng-template>
+    
+
   </div>
 </header>

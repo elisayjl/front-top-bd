@@ -5,39 +5,33 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
-  selector: 'app-sign-in',
+  selector: 'app-sign-up',
   standalone: true,
   imports: [CommonModule, FormsModule, HttpClientModule],
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
 })
-export class SignInComponent {
+export class SignUpComponent {
   username: string = '';
+  name: string = '';
   password: string = '';
 
   constructor(private http: HttpClient, private router: Router) {}
 
   onSubmit(): void {
-    console.log('Submit chamado');
-    const loginData = {
+    const registerData = {
       username: this.username,
+      name: this.name,
       password: this.password
     };
 
-    this.http.post('http://localhost:5000/login', loginData).subscribe({
+    this.http.post('http://localhost:5000/register', registerData).subscribe({
       next: (response: any) => {
-        console.log('Login bem-sucedido', response);
-
-        // 👉 Salva o token no localStorage
-        if (response.token) {
-          localStorage.setItem('token', response.token);
-        }
-
-        this.router.navigate(['/']);
+        console.log('Registro bem-sucedido', response);
+        this.router.navigate(['/signIn']);
       },
       error: (error) => {
-        console.error('Erro no login', error);
-        alert('Usuário ou senha inválidos');
+        console.error('Erro no registro', error);
       }
     });
   }
@@ -49,8 +43,4 @@ export class SignInComponent {
   public navigateToSignUp(): void {
     window.location.href = '/signUp';
   }
-
 }
-
-
-
